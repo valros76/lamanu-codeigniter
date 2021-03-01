@@ -1,2 +1,5 @@
-<?php 
-echo '<h2>'.$title.'</h2>';
+<section class="main-sections">
+   <h2 class="main-sections-title">
+      <?= $title ;?>
+   </h2>
+</section>

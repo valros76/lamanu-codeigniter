@@ -5,13 +5,23 @@ window.addEventListener("DOMContentLoaded", (e) => {
       e.preventDefault()
       if (window.innerWidth > 760) {
          menu.style.display = 'grid'
-      } else {
-         menu_wrapper.textContent = `▼`;
-         menu_wrapper.classList.remove('active')
+      } else if(window.innerWidth <= 760 && !menu_wrapper.classList.contains('active')){
+         // menu_wrapper.textContent = `▼`;
+         // menu_wrapper.classList.remove('active')
          menu.style.display = 'none'
       }
    }
    window.onresize = resizeWindow;
+   window.addEventListener('scroll', (e)=>{
+      e.preventDefault()
+      document.body.style.setProperty('--scroll',window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+      if(document.querySelector('.main-nav').offsetTop > 58){
+         document.querySelector('.main-nav').style.boxShadow = '0 0 3px 1.5px black';
+      }else{
+         document.querySelector('.main-nav').style.boxShadow = 'none';
+      }
+      console.log(window.innerHeight + window.scrollY)
+   })
    if (menu_wrapper) {
       menu_wrapper.addEventListener('click', (e) => {
          e.preventDefault()
