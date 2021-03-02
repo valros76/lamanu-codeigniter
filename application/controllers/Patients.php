@@ -95,37 +95,26 @@ class Patients extends CI_Controller
    public function modif()
    {
       $patient = $this->patients_model->get_patients($this->input->post('id'));
-      $exists_email = (int) $this->patients_model->exist_patient_email($patient['mail'], $patient['id']);
-      if ($exists_email === 1 && $this->input->post('mail') === $patient['mail']) {
-         if ($this->form_validation->run('create_patients') === FALSE && $this->form_validation->run('update_patient_mail') === FALSE) {
-            $data['title'] = 'Modifier un patient';
-            setlocale(LC_ALL, 'fr_FR');
-            $data['today'] = new DateTime();
-            $this->load->view('templates/header', $data);
-            $this->load->view('patients/modif-patient', $data);
-            $this->load->view('templates/footer');
-         } else {
-            $this->patients_model->update_patients();
-            $data['title'] = 'Modifier un nouveau patient';
-            $this->load->view('templates/header', $data);
-            $this->load->view('patients/success_modif');
-            $this->load->view('templates/footer');
-         }
-      }else{
-         if ($this->form_validation->run('create_patients') === FALSE && $this->form_validation->run('insert_patient_mail') === FALSE) {
-            $data['title'] = 'Modifier un patient';
-            setlocale(LC_ALL, 'fr_FR');
-            $data['today'] = new DateTime();
-            $this->load->view('templates/header', $data);
-            $this->load->view('patients/modif-patient', $data);
-            $this->load->view('templates/footer');
-         } else {
-            $this->patients_model->update_patients();
-            $data['title'] = 'Modifier un nouveau patient';
-            $this->load->view('templates/header', $data);
-            $this->load->view('patients/success_modif');
-            $this->load->view('templates/footer');
-         }
+      $exists_email = (bool) $this->patients_model->exist_patient_email($patient['mail'], $patient['id']);
+      if ($exists_email === TRUE && $this->form_validation->run('insert_patient_mail') === FALSE && $this->input->post('mail') === $patient['mail'] && $this->form_validation->run('create_patients') === FALSE && $this->form_validation->run('update_patient_mail') === FALSE) {
+         $this->patients_model->update_patients();
+         $data['title'] = 'Modifier un nouveau patient';
+         $this->load->view('templates/header', $data);
+         $this->load->view('patients/success_modif');
+         $this->load->view('templates/footer');
+      } else if ($exists_email === TRUE && $this->form_validation->run('insert_patient_mail') === FALSE && $this->input->post('mail') === $patient['mail'] && $this->form_validation->run('create_patients') === FALSE && $this->form_validation->run('insert_patient_mail') === FALSE) {
+         $this->patients_model->update_patients();
+         $data['title'] = 'Modifier un nouveau patient';
+         $this->load->view('templates/header', $data);
+         $this->load->view('patients/success_modif');
+         $this->load->view('templates/footer');
+      } else {
+         $data['title'] = 'Modifier un patient';
+         setlocale(LC_ALL, 'fr_FR');
+         $data['today'] = new DateTime();
+         $this->load->view('templates/header', $data);
+         $this->load->view('patients/modif-patient', $data);
+         $this->load->view('templates/footer');
       }
    }
 }
