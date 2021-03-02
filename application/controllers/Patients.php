@@ -74,7 +74,7 @@ class Patients extends CI_Controller{
       if(empty($data['patients_item'])){
          show_404();
       }
-      $data['title'] = 'Créer un nouveau patient';
+      $data['title'] = 'Modifier un patient';
       setlocale(LC_ALL, 'fr_FR');
       $data['today'] = new DateTime();
 

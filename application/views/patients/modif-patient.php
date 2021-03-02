@@ -1,6 +1,11 @@
+<?php
+   if(empty($patients_item)){
+      header('Location:'.base_url('patients/listePatients'));
+   }
+;?>
 <section class="main-sections">
    <h2 class="main-sections-title">
-      Formulaire d'ajout de patient
+      Formulaire de modification de patient
    </h2>
    <article class="form-articles">
       <?= validation_errors(); ?>

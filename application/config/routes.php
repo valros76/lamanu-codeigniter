@@ -49,6 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['appointments/create'] = 'appointments/create';
+$route['appointments/modif'] = 'appointments/modif';
+$route['appointments/listAppointments'] = 'appointments/listAppointments';
+$route['appointments/modifAppointments'] = 'appointments/modifAppointments';
+$route['appointments/(:any)'] = 'appointments/view/$1';
+$route['appointments'] = 'appointments';
 $route['patients/create'] = 'patients/create';
 $route['patients/modif'] = 'patients/modif';
 $route['patients/listePatients'] = 'patients/listePatients';

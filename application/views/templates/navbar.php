@@ -12,8 +12,18 @@
          </a>
       </li>
       <li class="main-menu-items">
+         <a href="<?= base_url('appointments/create'); ?>" class="main-menu-links">
+            Ajouter un rendez-vous
+         </a>
+      </li>
+      <li class="main-menu-items">
          <a href="<?= base_url('patients/listePatients'); ?>" class="main-menu-links">
             Liste des patients
+         </a>
+      </li>
+      <li class="main-menu-items">
+         <a href="<?= base_url('appointments/listAppointments'); ?>" class="main-menu-links">
+            Liste des rendez-vous
          </a>
       </li>
       <!-- <li class="main-menu-items">
