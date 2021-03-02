@@ -4,7 +4,7 @@ class Pages extends CI_Controller{
       parent::__construct();
    }
    
-      public function view($page = 'home'){
+      public function view($page = 'index'){
          if(!file_exists(APPPATH.'views/pages/'.$page.'.php')){
             show_404();
          }

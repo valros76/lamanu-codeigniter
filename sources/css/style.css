@@ -140,9 +140,9 @@ body{
 }
 
 .main-articles{
-   width:max-content;
-   min-height:80px;
+   width:100%;
    display:flex;
+   flex-direction:column;
    justify-content:flex-start;
    align-items:center;
    flex-wrap:wrap;
@@ -166,6 +166,64 @@ body{
 }
 .main-footer p{
    padding:1em;
+}
+
+.form-articles{
+   width:max-content;
+   display:flex;
+   justify-content:stretch;
+   align-items:stretch;
+   padding:1em;
+   margin:0 auto;
+}
+form{
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   align-items:center;
+   gap:0.5em;
+}
+form label{
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   flex-wrap:wrap;
+   margin:0.15em auto;
+}
+form input:not([type="submit"]){
+   min-width:250px;
+   min-height:32px;
+   border-radius:4px;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   flex-wrap:wrap;
+   text-align:center;
+   border:none;
+   background-color:#e0daf5;
+   padding:0.5em 1em;
+   margin-bottom:1em;
+}
+form input[type="submit"]{
+   min-width:150px;
+   min-height:32px;
+   border-radius:4px;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   flex-wrap:wrap;
+   text-align:center;
+   border:none;
+   background-color:#e9e9e9;
+   padding:0.5em 1em;
+   margin-top:1.5em;
+   font-weight:500;
+}form input[type="submit"]:hover{
+   cursor:pointer;
+   background-color:#d6d6d6;
+}form input[type="submit"]:active{
+   cursor:pointer;
+   background-color:#bebebe;
 }
 
 @media all and (min-width:760px){
