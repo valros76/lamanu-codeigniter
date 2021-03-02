@@ -14,6 +14,28 @@ class Patients extends CI_Controller{
       $this->load->view('templates/footer', $data);
    }
 
+   public function listePatients(){
+      $data['patients'] = $this->patients_model->get_patients();
+      $data['title'] = 'Liste des patients';
+
+      $this->load->view('templates/header', $data);
+      $this->load->view('patients/liste-patients', $data);
+      $this->load->view('templates/footer', $data);
+   }
+
+   public function profilPatient($slug = NULL){
+      $data['patients_item'] = $this->patients_model->get_patients($slug);
+
+      if(empty($data['patients_item'])){
+         show_404();
+      }
+      $data['title'] = $data['patients_item']['id'];
+
+      $this->load->view('templates/header', $data);
+      $this->load->view('patients/profil-patient', $data);
+      $this->load->view('templates/footer', $data);
+   }
+
    public function view($slug = NULL){
       $data['patients_item'] = $this->patients_model->get_patients($slug);
 
@@ -35,11 +57,14 @@ class Patients extends CI_Controller{
          setlocale(LC_ALL, 'fr_FR');
          $data['today'] = new DateTime();
          $this->load->view('templates/header',$data);
-         $this->load->view('patients/create', $data);
+         $this->load->view('patients/ajout-patient', $data);
          $this->load->view('templates/footer');
       }else{
          $this->patients_model->set_patients();
+         $data['title'] = 'Créer un nouveau patient';
+         $this->load->view('templates/header',$data);
          $this->load->view('patients/success');
+         $this->load->view('templates/footer');
       }
    }
 }

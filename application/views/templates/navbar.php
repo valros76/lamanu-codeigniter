@@ -7,8 +7,13 @@
          </a>
       </li>
       <li class="main-menu-items">
-         <a href="<?= '/patients/create'; ?>" class="main-menu-links">
+         <a href="<?= 'patients/create'; ?>" class="main-menu-links">
             Ajouter un patient
+         </a>
+      </li>
+      <li class="main-menu-items">
+         <a href="<?= 'listePatients'; ?>" class="main-menu-links">
+            Liste des patients
          </a>
       </li>
       <!-- <li class="main-menu-items">

@@ -225,6 +225,10 @@ form input[type="submit"]{
    cursor:pointer;
    background-color:#bebebe;
 }
+.form-errors{
+   color:#e33;
+   font-size:14px;
+}
 
 @media all and (min-width:760px){
    #main-menu-wrapper{
