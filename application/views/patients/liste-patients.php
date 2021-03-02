@@ -10,6 +10,13 @@
    <p><?= $patients_item['birthdate'] ;?></p>
    <p><?= $patients_item['phone'] ;?></p>
    <p><?= $patients_item['mail'] ;?></p>
+   <p><?php 
+      foreach($appointments as $appointment_item){
+         if($appointment_item['idPatients'] === $patients_item['id']){
+            echo '<p>Rendez-vous le : '.$appointment_item['dateHour'].'</p>';
+         }
+      }
+   ;?></p>
 </div>
 <p>
    <a href="<?= site_url('patients/profilPatient/'.$patients_item['id']) ;?>">

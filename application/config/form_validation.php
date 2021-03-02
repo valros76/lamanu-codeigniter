@@ -19,12 +19,7 @@ $config = array(
       array(
          'field' => 'phone',
          'label' => 'numéro de téléphone',
-         'rules' => 'trim|required|min_length[10]|regex_match[/^(0|\+33)(\d{9,10})$/]'
-      ),
-      array(
-         'field' => 'mail',
-         'label' => 'adresse email',
-         'rules' => 'required|is_unique[patients.mail]|min_length[3]|max_length[100]|valid_email|regex_match[/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,13}$/]'
+         'rules' => 'trim|required|regex_match[/^(0|\+33)(\d{9,10})$/]'
       )
    ),
    'create_appointments' => array(
@@ -39,4 +34,18 @@ $config = array(
          'rules' => 'required|integer|greater_than[0]'
       )
    ),
+   'insert_patient_mail' => array(
+      array(
+         'field' => 'mail',
+         'label' => 'adresse email',
+         'rules' => 'required|is_unique[patients.mail]|min_length[3]|max_length[100]|valid_email|regex_match[/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,13}$/]'
+      )
+   ),
+   'update_patient_mail' => array(
+      array(
+         'field' => 'mail',
+         'label' => 'adresse email',
+         'rules' => 'required|min_length[3]|max_length[100]|valid_email|regex_match[/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,13}$/]'
+      )
+   )
 );

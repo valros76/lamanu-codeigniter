@@ -1,11 +1,14 @@
 <?php
-class Patients_model extends CI_Model{
-   public function __construct(){
+class Patients_model extends CI_Model
+{
+   public function __construct()
+   {
       $this->load->database();
    }
 
-   public function get_patients($slug = FALSE){
-      if($slug === FALSE){
+   public function get_patients($slug = FALSE)
+   {
+      if ($slug === FALSE) {
          $query = $this->db->get('patients');
          return $query->result_array();
       }
@@ -13,7 +16,13 @@ class Patients_model extends CI_Model{
       return $query->row_array();
    }
 
-   public function set_patients(){
+   public function exist_patient_email($email,$id)
+   {
+      return $this->db->query('SELECT `id` FROM `patients` WHERE `mail` = '.$this->db->escape($email) .' AND `id` = '.$id)->num_rows();
+   }
+
+   public function set_patients()
+   {
       $data = array(
          'lastname' => $this->input->post('lastname'),
          'firstname' => $this->input->post('firstname'),
@@ -25,7 +34,8 @@ class Patients_model extends CI_Model{
       return $this->db->insert('patients', $data);
    }
 
-   public function update_patients(){
+   public function update_patients()
+   {
       $data = array(
          'lastname' => $this->input->post('lastname'),
          'firstname' => $this->input->post('firstname'),
@@ -33,7 +43,7 @@ class Patients_model extends CI_Model{
          'phone' => $this->input->post('phone'),
          'mail' => $this->input->post('mail'),
       );
-      $where = 'id = '.$this->input->post('id');
+      $where = 'id = ' . $this->input->post('id');
       $this->db->update('patients', $data, $where);
    }
 }
