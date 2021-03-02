@@ -2,17 +2,17 @@
    <i id="main-menu-wrapper">▼</i>
    <ul class="main-menu">
       <li class="main-menu-items">
-         <a href="<?= '/index'; ?>" class="main-menu-links">
+         <a href="<?= base_url('/index'); ?>" class="main-menu-links">
             Index
          </a>
       </li>
       <li class="main-menu-items">
-         <a href="<?= 'patients/create'; ?>" class="main-menu-links">
+         <a href="<?= base_url('patients/create'); ?>" class="main-menu-links">
             Ajouter un patient
          </a>
       </li>
       <li class="main-menu-items">
-         <a href="<?= 'listePatients'; ?>" class="main-menu-links">
+         <a href="<?= base_url('patients/listePatients'); ?>" class="main-menu-links">
             Liste des patients
          </a>
       </li>
