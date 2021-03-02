@@ -4,6 +4,7 @@
 <p><?= $patients_item['birthdate'] ;?></p>
 <p><?= $patients_item['phone'] ;?></p>
 <p><?= $patients_item['mail'] ;?></p>
+<p><a href="<?= base_url('patients/modifPatient/'.$patients_item['id']);?>">Modifier le patient</a></p>
 <p><a href="<?= base_url('patients/listePatients');?>">Retouner sur la liste des patients</a></p>
 </article>
 </section>

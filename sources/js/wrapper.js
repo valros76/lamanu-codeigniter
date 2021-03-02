@@ -20,7 +20,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
       }else{
          document.querySelector('.main-nav').style.boxShadow = 'none';
       }
-      console.log(window.innerHeight + window.scrollY)
    })
    if (menu_wrapper) {
       menu_wrapper.addEventListener('click', (e) => {

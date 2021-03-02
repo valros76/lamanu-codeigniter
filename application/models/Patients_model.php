@@ -14,8 +14,6 @@ class Patients_model extends CI_Model{
    }
 
    public function set_patients(){
-      $this->load->helper('url');
-
       $data = array(
          'lastname' => $this->input->post('lastname'),
          'firstname' => $this->input->post('firstname'),
@@ -25,5 +23,17 @@ class Patients_model extends CI_Model{
       );
 
       return $this->db->insert('patients', $data);
+   }
+
+   public function update_patients(){
+      $data = array(
+         'lastname' => $this->input->post('lastname'),
+         'firstname' => $this->input->post('firstname'),
+         'birthdate' => $this->input->post('birthdate'),
+         'phone' => $this->input->post('phone'),
+         'mail' => $this->input->post('mail'),
+      );
+      $where = 'id = '.$this->input->post('id');
+      $this->db->update('patients', $data, $where);
    }
 }

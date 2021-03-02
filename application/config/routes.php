@@ -50,7 +50,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['patients/create'] = 'patients/create';
+$route['patients/modif'] = 'patients/modif';
 $route['patients/listePatients'] = 'patients/listePatients';
+$route['patients/modifPatient'] = 'patients/modifPatient';
 $route['patients/(:any)'] = 'patients/view/$1';
 $route['patients'] = 'patients';
 $route['(:any)'] = 'pages/view/$1';

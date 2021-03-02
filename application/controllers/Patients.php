@@ -50,9 +50,7 @@ class Patients extends CI_Controller{
    }
 
    public function create(){
-      $this->load->helper('form');
       if($this->form_validation->run('create_patients') === FALSE){
-
          $data['title'] = 'Créer un nouveau patient';
          setlocale(LC_ALL, 'fr_FR');
          $data['today'] = new DateTime();
@@ -64,6 +62,40 @@ class Patients extends CI_Controller{
          $data['title'] = 'Créer un nouveau patient';
          $this->load->view('templates/header',$data);
          $this->load->view('patients/success');
+         $this->load->view('templates/footer');
+      }
+   }
+
+   
+
+   public function modifPatient($slug = NULL){
+      $data['patients_item'] = $this->patients_model->get_patients($slug);
+
+      if(empty($data['patients_item'])){
+         show_404();
+      }
+      $data['title'] = 'Créer un nouveau patient';
+      setlocale(LC_ALL, 'fr_FR');
+      $data['today'] = new DateTime();
+
+      $this->load->view('templates/header', $data);
+      $this->load->view('patients/modif-patient', $data);
+      $this->load->view('templates/footer', $data);
+   }
+
+   public function modif(){
+      if($this->form_validation->run('create_patients') === FALSE){
+         $data['title'] = 'Modifier un patient';
+         setlocale(LC_ALL, 'fr_FR');
+         $data['today'] = new DateTime();
+         $this->load->view('templates/header',$data);
+         $this->load->view('patients/modif-patient', $data);
+         $this->load->view('templates/footer');
+      }else{
+         $this->patients_model->update_patients();
+         $data['title'] = 'Modifier un nouveau patient';
+         $this->load->view('templates/header',$data);
+         $this->load->view('patients/success_modif');
          $this->load->view('templates/footer');
       }
    }
