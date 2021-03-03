@@ -53,4 +53,13 @@ class Patients_model extends CI_Model
          $this->db->delete('patients', array('id' => $id_patient));
       }
    }
+
+   public function search_patient($id){
+      $this->db->get_where('patients', array('id' => $id));
+      if($this->db->count_all_results() != 0){
+         return true;
+      }else{
+         return false;
+      }
+   }
 }

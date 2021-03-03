@@ -129,4 +129,22 @@ class Patients extends CI_Controller
          $this->load->view('templates/footer');
       }
    }
+
+   public function search(){
+      if($this->form_validation->run('search_patient') === FALSE || 
+      $this->patients_model->search_patient($this->input->post('idPatients')) === false){
+         $this->listePatients();
+      }else{
+         $data['patients_item'] = $this->patients_model->get_patients($this->input->post('idPatients'));
+   
+         if (empty($data['patients_item'])) {
+            show_404();
+         }
+         $data['title'] = $data['patients_item']['id'];
+         $data['appointments'] = $this->appointments_model->get_appointments();
+         $this->load->view('templates/header', $data);
+         $this->load->view('patients/profil-patient', $data);
+         $this->load->view('templates/footer', $data);
+      }
+   }
 }

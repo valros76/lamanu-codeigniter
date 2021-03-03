@@ -1,4 +1,21 @@
 <section class="main-sections">
+<div class="search-container">
+      <?php echo form_open('patients/search'); ?>
+      <label for="idPatients">Sélection du patient :</label>
+      <input list="patients-id" id="idPatients" name="idPatients" required/>
+      <datalist id="patients-id">
+         <?php
+         foreach ($patients as $patient_item) :; ?>
+            <option value="<?= $patient_item['id']; ?>"><?= $patient_item['lastname'] . ' ' . $patient_item['firstname'] . ' - ' . $patient_item['birthdate']; ?></option>
+         <?php
+         endforeach;; ?>
+      </datalist>
+      <?= form_error('idPatients', '<div class="form-errors">', '</div>'); ?>
+      <input type="submit" name="submit" value="Rechercher" />
+      </form>
+   </div>
+</section>
+<section class="main-sections">
    <h2 class="main-sections-title"><?= $title; ?></h2>
    <a href="<?= base_url('patients/create'); ?>">Créer un nouveau patient</a>
    <?php foreach ($patients as $patients_item) :; ?>
