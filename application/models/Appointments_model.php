@@ -4,13 +4,17 @@ class Appointments_model extends CI_Model{
       $this->load->database();
    }
 
-   public function get_appointments($slug = FALSE){
+   public function get_appointments($slug = FALSE, $limit = 5, $offset = 0){
       if($slug === FALSE){
-         $query = $this->db->get('appointments');
+         $query = $this->db->get('appointments', $limit, $offset);
          return $query->result_array();
       }
-      $query = $this->db->get_where('appointments', array('id' => $slug));
+      $query = $this->db->get_where('appointments', array('id' => $slug), $limit ,$offset);
       return $query->row_array();
+   }
+
+   public function count_appointments(){
+      return $this->db->count_all('appointments');
    }
 
    public function set_appointments(){
