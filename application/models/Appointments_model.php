@@ -30,4 +30,10 @@ class Appointments_model extends CI_Model{
       $where = 'id = '.$this->input->post('id');
       $this->db->update('appointments', $data, $where);
    }
+
+   public function delete_appointment($id = NULL){
+      if($id != NULL){
+         $this->db->delete('appointments', array('id' => $id));
+      }
+   }
 }

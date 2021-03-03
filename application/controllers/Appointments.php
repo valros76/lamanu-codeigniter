@@ -84,7 +84,19 @@ class Appointments extends CI_Controller{
          $this->load->view('templates/footer');
       }else{
          $this->appointments_model->update_patients();
-         $data['title'] = 'Modifier un nouveau rendez-vous';
+         $data['title'] = 'Modifier un rendez-vous';
+         $this->load->view('templates/header',$data);
+         $this->load->view('appointments/success_modif');
+         $this->load->view('templates/footer');
+      }
+   }
+
+   public function delete(){
+      if($this->form_validation->run('delete_appointment') === FALSE){
+         $this->listAppointments();
+      }else{
+         $this->appointments_model->delete_appointment($this->input->post('appointment_id'));
+         $data['title'] = 'Supprimer un rendez-vous';
          $this->load->view('templates/header',$data);
          $this->load->view('appointments/success_modif');
          $this->load->view('templates/footer');

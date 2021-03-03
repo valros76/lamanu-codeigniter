@@ -47,5 +47,12 @@ $config = array(
          'label' => 'adresse email',
          'rules' => 'required|min_length[3]|max_length[100]|valid_email|regex_match[/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,13}$/]'
       )
+   ),
+   'delete_appointment' => array(
+      array(
+         'field' => 'appointment_id',
+         'label' => 'id du rendez-vous',
+         'rules' => 'required|integer|greater_than[0]'
+      )
    )
 );
