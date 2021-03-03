@@ -3,9 +3,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
    var menu = document.querySelector('.main-menu')
    let resizeWindow = (e) => {
       e.preventDefault()
-      if (window.innerWidth > 760) {
+      if (window.innerWidth > 960) {
          menu.style.display = 'grid'
-      } else if(window.innerWidth <= 760 && !menu_wrapper.classList.contains('active')){
+      } else if(window.innerWidth <= 960 && !menu_wrapper.classList.contains('active')){
          // menu_wrapper.textContent = `▼`;
          // menu_wrapper.classList.remove('active')
          menu.style.display = 'none'
