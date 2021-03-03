@@ -6,19 +6,23 @@ class Patients_model extends CI_Model
       $this->load->database();
    }
 
-   public function get_patients($slug = FALSE)
+   public function get_patients($slug = FALSE, $limit = 5, $offset = 0)
    {
       if ($slug === FALSE) {
-         $query = $this->db->get('patients');
+         $query = $this->db->get('patients', $limit, $offset);
          return $query->result_array();
       }
-      $query = $this->db->get_where('patients', array('id' => $slug));
+      $query = $this->db->get_where('patients', array('id' => $slug), $limit ,$offset);
       return $query->row_array();
    }
 
    public function exist_patient_email($email,$id)
    {
       return $this->db->query('SELECT `id` FROM `patients` WHERE `mail` = '.$this->db->escape($email) .' AND `id` = '.$id)->num_rows();
+   }
+
+   public function count_patients(){
+      return $this->db->count_all('patients');
    }
 
    public function set_patients()

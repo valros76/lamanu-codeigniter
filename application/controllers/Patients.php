@@ -20,7 +20,23 @@ class Patients extends CI_Controller
 
    public function listePatients()
    {
-      $data['patients'] = $this->patients_model->get_patients();
+      $nb_patients = $this->patients_model->count_patients();
+      $limit_by_page = (int) 5;
+      $offset_page = 0;
+      $max_pages = (int) ceil(round(($nb_patients / $limit_by_page), 0));
+      /*$actual_page = $_GET['page'] > 0 ? (int) abs(strip_tags(htmlspecialchars($_GET['page']))) - 1 : (int) abs(strip_tags(htmlspecialchars($_GET['page']))); */
+      if(!empty($_GET['page']) && (int) $_GET['page'] >= 1 && (int) $_GET['page'] <= $max_pages){
+         $actual_page = (int) abs(strip_tags(htmlspecialchars($_GET['page'])));
+         $offset_page = ($limit_by_page*$actual_page);
+      }else if(!empty($_GET['page']) && (int) $_GET['page'] >= 1 && (int) $_GET['page'] > $max_pages){
+         $actual_page = (int) abs(strip_tags(htmlspecialchars($_GET['page'])));
+         $offset_page = ($max_pages);
+      }else{
+         $actual_page = 0;
+      }
+      $data['actual_page'] = $actual_page;
+      $data['max_pages'] = $max_pages;
+      $data['patients'] = $this->patients_model->get_patients(FALSE, $limit_by_page, $offset_page);
       $data['title'] = 'Liste des patients';
       $data['appointments'] = $this->appointments_model->get_appointments();
       $this->load->view('templates/header', $data);

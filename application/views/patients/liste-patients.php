@@ -47,5 +47,32 @@
             </a>
          </p>
       </article>
-   <?php endforeach; ?>
+   <?php
+   endforeach;; ?>
+   <table class="pagination-table">
+      <tr>
+      <?php
+      if($actual_page <= $max_pages){
+         if($actual_page === 0){
+            $actual_page = 1;
+         }
+         if($max_pages === 1){
+            $max_pages = 2;
+         }
+         echo '<td class="pagination-index-start"><a href="'.base_url('patients/listePatients').'?page=0" class="pagination-button pagination-start" data-page="0">First</a></td>';
+         for ($i = $actual_page - $actual_page; $i <= $max_pages; $i++) {
+            if($i <= (($actual_page + 5) - 1) && $i != $max_pages){
+               echo '<td><a href="'.base_url('patients/listePatients').'?page='.$i.'" class="pagination-button" data-page="'.$i.'">'.($i+1).'</a></td>';
+            }
+         }
+         echo '<td class="pagination-index-end"><a href="'.base_url('patients/listePatients?page=').''.$max_pages.'" class="pagination-button pagination-end" data-page="'.$max_pages.'">Last</a></td>';
+      }else{
+         if($max_pages === 1){
+            $max_pages = 2;
+         }
+         echo '<td class="pagination-index-start"><a href="'.base_url('patients/listePatients').'?page=1" class="pagination-button pagination-start" data-page="1">First</a></td>';
+         echo '<td class="pagination-index-end"><a href="'.base_url('patients/listePatients').'?page='.$max_pages.'" class="pagination-button pagination-end" data-page="'.$max_pages.'">Last</a></td>';
+      }; ?>
+      </tr>
+   </table>
 </section>
