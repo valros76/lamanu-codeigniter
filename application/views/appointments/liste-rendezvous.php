@@ -5,11 +5,11 @@
       <input list="patients-id" id="idPatients" name="idPatients" required />
       <datalist id="patients-id">
          <?php
-         foreach ($appointments as $appointments_item) :; ?>
+         foreach ($all_appointments as $appointments_item) :; ?>
             <option value="<?= $appointments_item['id']; ?>">
                <?= $appointments_item['dateHour'] . ' - '; ?>
                <?php
-               foreach ($patients as $patient) {
+               foreach ($all_patients as $patient) {
                   if ($patient['id'] === $appointments_item['idPatients']) {; ?>
                      <p>
                         <?= $patient['lastname'] . ' ' . $patient['firstname'] . ' - ' . $patient['birthdate']; ?>
@@ -38,7 +38,7 @@
          <div class="main">
             <p><?= $appointments_item['dateHour']; ?></p>
             <?php
-            foreach ($patients as $patient) {
+            foreach ($all_patients as $patient) {
                if ($patient['id'] === $appointments_item['idPatients']) {; ?>
                   <p>
                      <?= $patient['lastname'] . ' ' . $patient['firstname'] . ' - ' . $patient['birthdate']; ?>

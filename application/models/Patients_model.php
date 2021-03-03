@@ -12,8 +12,13 @@ class Patients_model extends CI_Model
          $query = $this->db->get('patients', $limit, $offset);
          return $query->result_array();
       }
-      $query = $this->db->get_where('patients', array('id' => $slug), $limit ,$offset);
+      $query = $this->db->get_where('patients', array('id' => $slug));
       return $query->row_array();
+   }
+
+   public function get_all_patients(){
+      $query = $this->db->get('patients');
+         return $query->result_array();
    }
 
    public function exist_patient_email($email,$id)

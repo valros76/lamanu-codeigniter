@@ -47,9 +47,11 @@ class Appointments extends CI_Controller{
       $data['actual_page'] = $actual_page;
       $data['max_pages'] = $max_pages;
       $data['appointments'] = $this->appointments_model->get_appointments(FALSE, $limit_by_page, $offset_page);
+      $data['all_appointments'] = $this->appointments_model->get_all_appointments();
       $data['title'] = 'Liste des rendez-vous';
 
       $data['patients'] = $this->patients_model->get_patients();
+      $data['all_patients'] = $this->patients_model->get_all_patients();
       $this->load->view('templates/header', $data);
       $this->load->view('appointments/liste-rendezvous', $data);
       $this->load->view('templates/footer', $data);

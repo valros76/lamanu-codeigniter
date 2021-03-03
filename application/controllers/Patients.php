@@ -37,6 +37,7 @@ class Patients extends CI_Controller
       $data['actual_page'] = $actual_page;
       $data['max_pages'] = $max_pages;
       $data['patients'] = $this->patients_model->get_patients(FALSE, $limit_by_page, $offset_page);
+      $data['all_patients'] = $this->patients_model->get_all_patients();
       $data['title'] = 'Liste des patients';
       $data['appointments'] = $this->appointments_model->get_appointments();
       $this->load->view('templates/header', $data);
