@@ -1,8 +1,8 @@
 <section class="main-sections">
-<div class="search-container">
+   <div class="search-container">
       <?php echo form_open('patients/search'); ?>
       <label for="idPatients">Sélection du patient :</label>
-      <input list="patients-id" id="idPatients" name="idPatients" required/>
+      <input list="patients-id" id="idPatients" name="idPatients" required />
       <datalist id="patients-id">
          <?php
          foreach ($patients as $patient_item) :; ?>

@@ -36,4 +36,13 @@ class Appointments_model extends CI_Model{
          $this->db->delete('appointments', array('id' => $id));
       }
    }
+
+   public function search_appointments($id){
+      $this->db->get_where('appointments', array('id' => $id));
+      if($this->db->count_all_results() != 0){
+         return true;
+      }else{
+         return false;
+      }
+   }
 }

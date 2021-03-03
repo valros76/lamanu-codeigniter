@@ -102,4 +102,22 @@ class Appointments extends CI_Controller{
          $this->load->view('templates/footer');
       }
    }
+
+   public function search(){
+      if($this->form_validation->run('search_appointment') === FALSE || 
+      $this->patients_model->search_patient($this->input->post('idPatients')) === false){
+         $this->listAppointments();
+      }else{
+         $data['appointments_item'] = $this->appointments_model->get_appointments($this->input->post('idPatients'));
+   
+         if (empty($data['appointments_item'])) {
+            show_404();
+         }
+         $data['title'] = $data['appointments_item']['id'];
+         $data['appointments'] = $this->appointments_model->get_appointments();
+         $this->load->view('templates/header', $data);
+         $this->load->view('appointments/rendezvous', $data);
+         $this->load->view('templates/footer', $data);
+      }
+   }
 }

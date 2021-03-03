@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['appointments/create'] = 'appointments/create';
 $route['appointments/delete'] = 'appointments/delete';
 $route['appointments/modif'] = 'appointments/modif';
+$route['appointments/search'] = 'appointments/search';
 $route['appointments/listAppointments'] = 'appointments/listAppointments';
 $route['appointments/modifAppointments'] = 'appointments/modifAppointments';
 $route['appointments/(:any)'] = 'appointments/view/$1';
