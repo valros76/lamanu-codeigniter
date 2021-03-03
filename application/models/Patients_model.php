@@ -46,4 +46,11 @@ class Patients_model extends CI_Model
       $where = 'id = ' . $this->input->post('id');
       $this->db->update('patients', $data, $where);
    }
+
+   public function delete_patient($id_patient = NULL){
+      if($id_patient != NULL){
+         $this->db->delete('appointments', array('idPatients' => $id_patient));
+         $this->db->delete('patients', array('id' => $id_patient));
+      }
+   }
 }

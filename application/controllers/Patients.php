@@ -117,4 +117,16 @@ class Patients extends CI_Controller
          $this->load->view('templates/footer');
       }
    }
+
+   public function delete(){
+      if($this->form_validation->run('delete_patient') === FALSE){
+         $this->listePatients();
+      }else{
+         $this->patients_model->delete_patient($this->input->post('patient_id'));
+         $data['title'] = 'Supprimer un patient';
+         $this->load->view('templates/header',$data);
+         $this->load->view('patients/success_modif');
+         $this->load->view('templates/footer');
+      }
+   }
 }

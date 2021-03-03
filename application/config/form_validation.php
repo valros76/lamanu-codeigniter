@@ -54,5 +54,12 @@ $config = array(
          'label' => 'id du rendez-vous',
          'rules' => 'required|integer|greater_than[0]'
       )
-   )
+      ),
+      'delete_patient' => array(
+         array(
+            'field' => 'patient_id',
+            'label' => 'id du patient',
+            'rules' => 'required|integer|greater_than[0]'
+         )
+      )
 );
