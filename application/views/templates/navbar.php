@@ -17,6 +17,11 @@
          </a>
       </li>
       <li class="main-menu-items">
+         <a href="<?= base_url('patients/create_with_appointment'); ?>" class="main-menu-links">
+            Ajouter Patient + RDV
+         </a>
+      </li>
+      <li class="main-menu-items">
          <a href="<?= base_url('patients/listePatients'); ?>" class="main-menu-links">
             Liste des patients
          </a>

@@ -58,6 +58,7 @@ $route['appointments/modifAppointments'] = 'appointments/modifAppointments';
 $route['appointments/(:any)'] = 'appointments/view/$1';
 $route['appointments'] = 'appointments';
 $route['patients/create'] = 'patients/create';
+$route['patients/create_with_appointment'] = 'patients/create_with_appointment';
 $route['patients/delete'] = 'patients/delete';
 $route['patients/search'] = 'patients/search';
 $route['patients/modif'] = 'patients/modif';

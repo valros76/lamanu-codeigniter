@@ -75,7 +75,7 @@ class Patients extends CI_Controller
 
    public function create()
    {
-      if ($this->form_validation->run('create_patients') === FALSE) {
+      if ($this->form_validation->run('create_patients') === FALSE && $this->form_validation->run('insert_patient_mail') === FALSE) {
          $data['title'] = 'Créer un nouveau patient';
          setlocale(LC_ALL, 'fr_FR');
          $data['today'] = new DateTime();
@@ -85,6 +85,25 @@ class Patients extends CI_Controller
       } else {
          $this->patients_model->set_patients();
          $data['title'] = 'Créer un nouveau patient';
+         $this->load->view('templates/header', $data);
+         $this->load->view('patients/success');
+         $this->load->view('templates/footer');
+      }
+   }
+
+   public function create_with_appointment()
+   {
+      if ($this->form_validation->run('create_patients_with_appointments') === FALSE && $this->form_validation->run('insert_patient_mail') === FALSE) {
+         $data['title'] = 'Créer un nouveau patient avec rendez-vous';
+         setlocale(LC_ALL, 'fr_FR');
+         $data['today'] = new DateTime();
+         $this->load->view('templates/header', $data);
+         $this->load->view('patients/ajout-patient-rendez-vous', $data);
+         $this->load->view('templates/footer');
+      } else {
+         $this->patients_model->set_patients();
+         $this->appointments_model->set_appointments($this->patients_model->get_id_by_email($this->input->post('mail')));
+         $data['title'] = 'Créer un nouveau patient avec rendez-vous';
          $this->load->view('templates/header', $data);
          $this->load->view('patients/success');
          $this->load->view('templates/footer');

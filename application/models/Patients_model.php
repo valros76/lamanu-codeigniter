@@ -26,6 +26,10 @@ class Patients_model extends CI_Model
       return $this->db->query('SELECT `id` FROM `patients` WHERE `mail` = '.$this->db->escape($email) .' AND `id` = '.$id)->num_rows();
    }
 
+   public function get_id_by_email($email){
+      return $this->db->query('SELECT `id` FROM `patients` WHERE `mail` = '.$this->db->escape($email))->row()->id;
+   }
+
    public function count_patients(){
       return $this->db->count_all('patients');
    }

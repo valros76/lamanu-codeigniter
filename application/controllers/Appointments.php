@@ -63,6 +63,7 @@ class Appointments extends CI_Controller{
          setlocale(LC_ALL, 'fr_FR');
          $data['today'] = new DateTime();
          $data['patients'] = $this->patients_model->get_patients();
+         $data['all_patients'] = $this->patients_model->get_all_patients();
          $this->load->view('templates/header', $data);
          $this->load->view('appointments/ajout-rendezvous', $data);
          $this->load->view('templates/footer');

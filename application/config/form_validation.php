@@ -22,6 +22,33 @@ $config = array(
          'rules' => 'trim|required|regex_match[/^(0|\+33)(\d{9,10})$/]'
       )
    ),
+   'create_patients_with_appointments' => array(
+      array(
+         'field' => 'lastname',
+         'label' => 'nom de famille',
+         'rules' => 'required|min_length[1]|max_length[25]|regex_match[/^[A-Za-z\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-\ \']+$/]'
+      ),
+      array(
+         'field' => 'firstname',
+         'label' => 'prénom',
+         'rules' => 'required|min_length[1]|max_length[25]|regex_match[/^[A-Za-z\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-\ \']+$/]'
+      ),
+      array(
+         'field' => 'birthdate',
+         'label' => 'date de naissance',
+         'rules' => 'required|trim|alpha_dash|regex_match[/^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/]'
+      ),
+      array(
+         'field' => 'phone',
+         'label' => 'numéro de téléphone',
+         'rules' => 'trim|required|regex_match[/^(0|\+33)(\d{9,10})$/]'
+      ),
+      array(
+         'field' => 'dateHour',
+         'label' => 'date et heure',
+         'rules' => 'required|trim|is_unique[appointments.dateHour]|regex_match[/^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}[\T]\d{2}[\:]\d{2}$/]'
+      )
+   ),
    'create_appointments' => array(
       array(
          'field' => 'dateHour',

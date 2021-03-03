@@ -14,7 +14,7 @@
 
       <datalist id="patients-id">
       <?php
-         foreach ($patients as $patient_item) :; ?>
+         foreach ($all_patients as $patient_item) :; ?>
             <option value="<?= $patient_item['id']; ?>"><?= $patient_item['lastname'] . ' ' . $patient_item['firstname'] . ' - ' . $patient_item['birthdate']; ?></option>
          <?php
          endforeach;; ?>

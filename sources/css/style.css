@@ -363,6 +363,10 @@ form input[type="submit"]{
 .pagination-end{
    border-right:0.5px solid #252525;
 }
+.pagination-active{
+   background-color:#252525;
+   color:#fff;
+}
 
 @media all and (min-width:960px){
    #main-menu-wrapper{

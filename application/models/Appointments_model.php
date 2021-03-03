@@ -22,10 +22,15 @@ class Appointments_model extends CI_Model{
       return $this->db->count_all('appointments');
    }
 
-   public function set_appointments(){
+   public function set_appointments($idPatient = NULL){
+      if($idPatient === NULL){
+         $idPatient = $this->input->post('idPatients');
+      }else{
+         $idPatient = $idPatient;
+      }
       $data = array(
          'dateHour' => $this->input->post('dateHour'),
-         'idPatients' => $this->input->post('idPatients')
+         'idPatients' => $idPatient
       );
 
       return $this->db->insert('appointments', $data);
